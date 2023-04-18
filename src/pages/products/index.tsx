@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import './../../App.css';
 import PlusIcon from '../../shared/images/plus.svg'
 import EditIcon from '../../shared/images/edit.svg'
-import {Button, Table} from "../../components";
+import {Button, Table, Tooltip} from "../../components";
 
 interface ProductTableType {
     name: string;
@@ -49,16 +49,18 @@ const Products = () => {
             <Table columns={columns} data={productsState}/>
             <div className="bottom_block">
                 <span className="text_span">Изменения для выбранных товаров</span>
-                <Button icon={<img src={EditIcon} alt="icon"/>}
+                <Tooltip text={"При нажатии будет открываться отдельный экран редактирования группы товара"}><Button icon={<img src={EditIcon} alt="icon"/>}
                         text={"Изменить группу"}
                         callback={() => console.log('изменил')}
                         background={"#000000"}
                 />
-                <Button icon={<img src={EditIcon} alt="icon"/>}
+                </Tooltip>
+                <Tooltip text={"При нажатии будет открываться отдельный экран редактирования класстеров товара"}><Button icon={<img src={EditIcon} alt="icon"/>}
                         text={"Изменить кластер"}
                         callback={() => console.log('изменил')}
                         background={"#000000"}
                 />
+                </Tooltip>
             </div>
         </div>
     );

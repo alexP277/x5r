@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import './Table.css'
 import FilerIcon from '../../shared/images/filter.svg'
 import {Checkbox} from "../Checkbox";
+import {Tooltip} from "../Tooltip";
 
 interface Column {
     key: string;
@@ -25,7 +26,10 @@ export const Table: FC<TableProps> = ({columns, data}) => {
                             {
                                 index < columns.length - 1 ?
                                     <>
-                                        {column.title} <img src={FilerIcon} alt={'icon'}/>
+                                        {column.title} <Tooltip key={column.key}
+                                                                text={'Здесь будет возможность фильтрации'}>
+                                        <img src={FilerIcon} alt={'icon'}/>
+                                    </Tooltip>
                                     </>
                                     :
                                     <>

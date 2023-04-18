@@ -1,6 +1,8 @@
 import React, {FC} from 'react';
 import './ClusterTable.css'
 import DeleteIcon from '../../../../shared/images/delete.svg'
+import FilerIcon from "../../../../shared/images/filter.svg";
+import {Checkbox, Tooltip} from "../../../../components";
 
 interface ClusterColumn {
     key: string;
@@ -21,7 +23,19 @@ const ClusterTable: FC<ClusterTableProps> = ({columns, data,deleteHandler}) => {
                 {columns.map((column, index) => (
                     <th key={column.key}>
                         <div className="header_container">
-                            {column.title}
+                            {
+                                index < columns.length - 1 ?
+                                    <>
+                                        {column.title} <Tooltip key={column.key}
+                                                                text={'Здесь будет возможность фильтрации'}>
+                                        <img src={FilerIcon} alt={'icon'}/>
+                                    </Tooltip>
+                                    </>
+                                    :
+                                    <>
+                                        {column.title}
+                                    </>
+                            }
                         </div>
                     </th>
                 ))}
