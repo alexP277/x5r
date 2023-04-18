@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Routes, useLocation} from "react-router-dom";
-import Preloader from '../components/Preloader';
-import {routes} from "../shared/const/routes";
 import './../App.css'
+import {routes} from "../shared/const/routes";
+import {Preloader} from "../components";
 
 const Routing = () => {
     const [isEmulateLoading, setIsEmulateLoading] = useState<boolean>(true);

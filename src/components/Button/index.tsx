@@ -1,14 +1,14 @@
 import React, {FC} from 'react';
-import "./Button.css"; // импортируем CSS-стили для компонента
+import "./Button.css";
 
 type ButtonProps = {
-    icon?: JSX.Element; // опциональный параметр для иконки
+    icon?: JSX.Element;
     text?: string;
     callback?: () => void;
     background?: string;
 };
 
-const Index:FC<ButtonProps> = ({ icon, text, callback, background }) => {
+export const Button:FC<ButtonProps> = ({ icon, text, callback, background }) => {
     return (
         <button style={{backgroundColor: background}} onClick={callback} className="button">
             {icon && <span className="button-icon">{icon}</span>}
@@ -17,4 +17,3 @@ const Index:FC<ButtonProps> = ({ icon, text, callback, background }) => {
     );
 };
 
-export default Index;

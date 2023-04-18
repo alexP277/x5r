@@ -1,19 +1,19 @@
 import React, {FC} from 'react';
-import './Table.css'
-import FilerIcon from '../../shared/images/filter.svg'
-import {Checkbox} from "../Checkbox";
+import './ClusterTable.css'
+import DeleteIcon from '../../../../shared/images/delete.svg'
 
-interface Column {
+interface ClusterColumn {
     key: string;
     title: string;
 }
 
-interface TableProps {
-    columns: Column[];
+interface ClusterTableProps {
+    columns: ClusterColumn[];
     data: Record<string, any>[];
+    deleteHandler: (name: string) => void;
 }
 
-export const Table: FC<TableProps> = ({columns, data}) => {
+const ClusterTable: FC<ClusterTableProps> = ({columns, data,deleteHandler}) => {
     return (
         <table>
             <thead>
@@ -21,17 +21,7 @@ export const Table: FC<TableProps> = ({columns, data}) => {
                 {columns.map((column, index) => (
                     <th key={column.key}>
                         <div className="header_container">
-
-                            {
-                                index < columns.length - 1 ?
-                                    <>
-                                        {column.title} <img src={FilerIcon} alt={'icon'}/>
-                                    </>
-                                    :
-                                    <>
-                                        <Checkbox/> {column.title}
-                                    </>
-                            }
+                            {column.title}
                         </div>
                     </th>
                 ))}
@@ -43,7 +33,7 @@ export const Table: FC<TableProps> = ({columns, data}) => {
                     {columns.map((column, columnIndex) => (
                         <td key={column.key}>
                             {columnIndex === columns.length - 1 ? (
-                                <Checkbox isChecked={row[column.key]}/>
+                                <img onClick={(e)=> deleteHandler(data[rowIndex].name)} style={{cursor: "pointer"}} src={DeleteIcon} alt="delete icon"/>
                             ) : (
                                 row[column.key]
                             )}
@@ -55,3 +45,5 @@ export const Table: FC<TableProps> = ({columns, data}) => {
         </table>
     );
 };
+
+export default ClusterTable;

@@ -4,7 +4,7 @@ import './Checkbox.css'
 type CheckboxPropType = {
     isChecked?: boolean;
 }
-const Checkbox: FC<CheckboxPropType> = ({isChecked= false}) => {
+export const Checkbox: FC<CheckboxPropType> = ({isChecked= false}) => {
     const [checked, setChecked] = useState<boolean>(isChecked);
 
     const handleOnChange = () => {
@@ -18,4 +18,3 @@ const Checkbox: FC<CheckboxPropType> = ({isChecked= false}) => {
     );
 };
 
-export default Checkbox;
